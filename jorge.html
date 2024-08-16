@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Datos del formulario:</h2>
+    <ul id="formDataList"></ul> <!-- Lista desordenada para mostrar los cambios -->
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event){
+            event.preventDefault(); // Evita el envío del formulario
+            enviar(); // Llama a la función enviar
+        });
+
+        function enviar() {
+            // Obtiene los valores del campo del formulario
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Crear el texto para mostrar
+            const formDataText = `Nombre: ${name}, Email: ${email}`;
+
+            // Crear un nuevo elemento de lista
+            const li = document.createElement('li');
+            li.textContent = formDataText;
+
+            // Agregar el nuevo elemento a la lista
+            document.getElementById('formDataList').appendChild(li);
+        }
+    </script>
+    
+</body>
+</html>
